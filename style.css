@@ -3,3 +3,24 @@
 	padding: 0;
 	overflow: hidden;
 }
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+canvas {
+	display: block;
+}
+
+button {
+	padding: 15px 28px;
+	font-size: 20px;
+	background-color: red;
+}
+
+button:hover {
+	background-color: #a50000;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
