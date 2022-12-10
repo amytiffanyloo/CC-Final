@@ -18,7 +18,7 @@ change(){
   let level = amp.getLevel();
   let ellipseColor = round(map(level, 0, 1, 0, 15000));
     this.alpha = ellipseColor;
-     let ellipseSize = round(map(level,0,1,0,100));
-  this.size = random(50,300)*ellipseSize; 
+     let ellipseSize = round(map(level,0,1,0,2000));
+  this.size = random(10,300)*ellipseSize; 
 }
 }

@@ -14,13 +14,23 @@ canvas {
 	display: block;
 }
 
-button {
+/* button {
 	padding: 15px 28px;
 	font-size: 20px;
-	background-color: red;
+
+} */
+
+input {
+margin: 30px 20px 20px 20px
 }
 
 button:hover {
 	background-color: #a50000;
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h3{
+	margin: 20px 10px 10px 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: rgb(200,100,100);
 }

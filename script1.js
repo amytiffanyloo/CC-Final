@@ -1,7 +1,6 @@
 let mic,amp;
-let song1, song2, song3;
-let song;
 let songs = [];
+let song;
 let breaths1 =[];
 let breaths2 =[];
 let mode = 255;
@@ -11,26 +10,31 @@ function preload(){
   soundFormats('mp3')
   songs[0] = loadSound('song1.mp3');
   songs[1] = loadSound('song2.mp3');
-  song[2] = loadSound('song2.mp3');
+  songs[2] = loadSound('song3.mp3');
+    songChoice = floor(random(0,3));
+    song = songs[songChoice];
   console.log("song all loaded");
+  console.log(song);
+}
+
+function ampSet(){
+  amp = new p5.Amplitude();
+  amp.setInput(song);
 }
 
 function setup() {
   createCanvas(1200, 1000);
   background(255);
-  songChoice = floor(random(0,3));
-  song = songs[songChoice];
+  ampSet();
   frameRate(3);
-    noStroke()
-  amp = new p5.Amplitude();
-  amp.setInput(song);
+    noStroke();
   for (i=0; i<4;i++){
     breaths1[i] = new Breath(random(100,300));
 }
   for (i=0; i<3;i++){
     breaths2[i] = new Breath(random(100,300));
-}
-}
+
+}}
 
 function mousePressed(){
   if (song.isPlaying()) {
