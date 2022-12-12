@@ -19,6 +19,7 @@ function preload(){
 
 function ampSet(){
   amp = new p5.Amplitude();
+  amp.toggleNormalize(true);
   amp.setInput(song);
 }
 
@@ -41,20 +42,27 @@ function mousePressed(){
     // .isPlaying() returns a boolean
     song.stop();
   } else {
-    song.play(0,1,0.5,1,300);
+    song.play(0,1,0.5,1,600);
   }
 }
 
 function draw() {
     background(255);
-      for (i=0;i<breaths1.length;i++){
+    if(song.isPlaying()){
+        for (i=0;i<breaths1.length;i++){
         breaths1[i].display();
         breaths1[i].change();
       }
-        for (i=0;i<breaths2.length;i++){
+
+    }
+if(song.isPlaying()){
+            for (i=0;i<breaths2.length;i++){
         breaths2[i].display();
         breaths2[i].change();
       }
+
+}
+
           let level = amp.getLevel();
   let ellipseColor = round(map(level, 0, 1, 0, 15000));
   let ellipseSize = round(map(level,0,1,0,20000));
