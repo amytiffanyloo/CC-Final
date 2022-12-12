@@ -19,6 +19,6 @@ change(){
   let ellipseColor = round(map(level, 0, 1, 0, 15000));
     this.alpha = ellipseColor;
      let ellipseSize = round(map(level,0,1,0,2000));
-  this.size = random(10,300)*ellipseSize; 
+  this.size = random(10,80)*ellipseSize; 
 }
 }

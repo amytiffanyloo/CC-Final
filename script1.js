@@ -1,18 +1,19 @@
 let mic,amp;
-let songs = [];
+// let songs = [];
 let song;
 let breaths1 =[];
 let breaths2 =[];
 let mode = 255;
-let songChoice;
+// let songChoice;
 
 function preload(){
   soundFormats('mp3')
-  songs[0] = loadSound('song1.mp3');
-  songs[1] = loadSound('song2.mp3');
-  songs[2] = loadSound('song3.mp3');
-    songChoice = floor(random(0,3));
-    song = songs[songChoice];
+  song = loadSound('song1.mp3');
+//   songs[0] = loadSound('song1.mp3');
+//   songs[1] = loadSound('song2.mp3');
+//   songs[2] = loadSound('song3.mp3');
+    // songChoice = floor(random(0,3));
+    // song = songs[songChoice];
   console.log("song all loaded");
   console.log(song);
 }
@@ -20,7 +21,7 @@ function preload(){
 function ampSet(){
   amp = new p5.Amplitude();
   amp.toggleNormalize(true);
-  amp.setInput(song);
+  amp.setInput();
 }
 
 function setup() {
@@ -56,20 +57,20 @@ function draw() {
 
     }
 if(song.isPlaying()){
-            for (i=0;i<breaths2.length;i++){
+       for (i=0;i<breaths2.length;i++){
         breaths2[i].display();
         breaths2[i].change();
       }
-
 }
-
-          let level = amp.getLevel();
+     
+let level = amp.getLevel();
   let ellipseColor = round(map(level, 0, 1, 0, 15000));
   let ellipseSize = round(map(level,0,1,0,20000));
   push();
-    fill(mode);
+    fill(mode,mode,mode,mode);
   text("Ellipse Size: " + ellipseSize,5,10);
   text("Ellipse Color: " + ellipseColor,5,20);
+  text("Amplitude:"+level,5,30)
   pop();
     }
 
