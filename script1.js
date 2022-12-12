@@ -3,7 +3,7 @@ let mic,amp;
 let song;
 let breaths1 =[];
 let breaths2 =[];
-let mode = 255;
+let mode = 0;
 // let songChoice;
 
 function preload(){
