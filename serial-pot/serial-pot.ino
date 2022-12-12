@@ -1,15 +1,14 @@
-const int buttonPin = 2;
-void setup() {
-  Serial.begin(9600); // initialize serial communications
-  pinMode(buttonPin,INPUT);
-}
- 
-void loop() {
-  int button = digitalRead(buttonPin);                  
+int pressuresensor = A0;
+int sensorValue=0;
 
-  // print it out the serial port:
-  Serial.println(button);                             
-  // slight delay to stabilize the ADC:
-  delay(50);
-                                          
+void setup() {
+  Serial.begin(9600);
+  pinMode(pressuresensor,INPUT);
+}
+
+void loop() {
+  sensorValue = analogRead(pressuresensor);
+  Serial.println("sensorValue=");
+  Serial.println(sensorValue); 
+  delay(1000);    
 }

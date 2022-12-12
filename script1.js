@@ -1,10 +1,11 @@
 let mic,amp;
-// let songs = [];
 let song;
 let breaths1 =[];
 let breaths2 =[];
 let mode = 0;
+//below two codes used when I made array of songs to choose from 
 // let songChoice;
+// let songs = [];
 
 function preload(){
   soundFormats('mp3')
@@ -15,11 +16,13 @@ function preload(){
     // songChoice = floor(random(0,3));
     // song = songs[songChoice];
   console.log("song all loaded");
-  console.log(song);
 }
 
+//setting up amplitude analysis 
+//referred to p5js documentation at https://p5js.org/reference/#/p5.Amplitude and CodingTrain/Dan Shiffman:17.4 Amplitude Analysis at https://www.youtube.com/watch?v=NCCHQwNAN6Y
 function ampSet(){
-  amp = new p5.Amplitude();
+let smooth = 0.1
+  amp = new p5.Amplitude(smooth);
   amp.toggleNormalize(true);
   amp.setInput();
 }
@@ -30,6 +33,7 @@ function setup() {
   ampSet();
   frameRate(3);
     noStroke();
+//create two arrays of circles for more variation, an aesthetic decision
   for (i=0; i<4;i++){
     breaths1[i] = new Breath(random(100,300));
 }
@@ -38,6 +42,7 @@ function setup() {
 
 }}
 
+//song to play whenever mouse press happens
 function mousePressed(){
   if (song.isPlaying()) {
     // .isPlaying() returns a boolean
@@ -47,6 +52,7 @@ function mousePressed(){
   }
 }
 
+//when song is playing, ellipses will appear and will disappear when song is not playing
 function draw() {
     background(255);
     if(song.isPlaying()){
@@ -62,7 +68,7 @@ if(song.isPlaying()){
         breaths2[i].change();
       }
 }
-     
+//setting up a debug section that appears when right arrow key is pressed. Appears due to change in alpha     
 let level = amp.getLevel();
   let ellipseColor = round(map(level, 0, 1, 0, 15000));
   let ellipseSize = round(map(level,0,1,0,20000));
@@ -74,7 +80,7 @@ let level = amp.getLevel();
   pop();
     }
 
-//Turning on debug mode by changing alpha of text color
+//function to switch debug section on and off
 function keyPressed() {
   if (keyCode === LEFT_ARROW) {
     mode = 0;

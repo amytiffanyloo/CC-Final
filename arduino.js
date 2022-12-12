@@ -1,3 +1,5 @@
+//Below are codes that were used in Phase 1 to connect p5js sketch to Arduino. Digital input using button module and analog iinput using pressure sensor module are included. Codes for serial connections refer to code provided by Professor Andrew Cotter during Creative Coding class.
+
 let serial;                             // variable to hold an instance of the serialport library
 let portName = '/dev/cu.usbmodem1412301';  // fill in your serial port name here                        // for incoming serial data
 let portSelector;
@@ -5,6 +7,7 @@ let dataMode;
 // let button;
 let buttonData;  
 let psrData;  
+//creating array of words to be randomly generated
 let newWords = ["好","嗯","对","行"];
 let wordChoice;
 
@@ -25,19 +28,23 @@ function setup() {
 
 
 function draw() {
+//variable that stores number chosen to pull from array of words
   wordChoice = floor(random(0,3));
+  //if pressure sensor detects pressure within a threshold, generate text from array of words
 if(psrData<100){
   write();
 }else{
 }
+//version below was set for digital input of button module
 //if(buttonData ==1){
   // write();
 // }
 }
-
+//function to draw word from array, where wordChoice designates a number randomly generated
+//a vp
 function write(){
     text(newWords[wordChoice],random(100,500),random(100,500))
-  voice.play();
+  // voice.play();
 }
 
 // make a serial port selector object:
@@ -72,6 +79,7 @@ function portOpen() {
   console.log('the serial port opened.')
 }
 
+//stores serial connection data into psrData, which is the data detected from pressure sensor or button
 function serialEvent() {
   psrData = serial.readLine();
   console.log(psrData);
